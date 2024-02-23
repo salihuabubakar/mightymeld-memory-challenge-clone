@@ -18,17 +18,19 @@ export const possibleTileContents = [
 
 export function StartScreen({ start }) {
   return (
-    <div className="flex flex-col p-8 bg-pink-100 rounded-md items-center justify-center">
-      <h1 className="text-lg text-pink-500 mt-2 mb-3 font-bold">Memory</h1>
-      <p className="text-sm text-pink-500 mt-2 mb-5 font-bold">
-        Flip over tiles looking for pairs
-      </p>
-      <button
-        onClick={start}
-        className="bg-pink-500 text-white p-3 px-4 py-2 text-center w-1/2 rounded-full mt-3 hover:bg-pink-600"
-      >
-        Play
-      </button>
+    <div className="flex flex-col p-8 bg-pink-100 rounded-md items-center justify-center h-screen">
+      <div className="p-8 flex flex-col items-center justify-center">
+        <h1 className="text-lg text-pink-500 mt-2 mb-3 font-bold">Memory</h1>
+        <p className="text-sm text-pink-500 mt-2 mb-5 font-bold">
+          Flip over tiles looking for pairs
+        </p>
+        <button
+          onClick={start}
+          className="bg-pink-500 text-white p-3 px-4 py-2 text-center w-1/2 rounded-full mt-3 hover:bg-pink-600"
+        >
+          Play
+        </button>
+      </div>
     </div>
   );
 }
@@ -115,18 +117,18 @@ export function PlayScreen({ end }) {
   };
 
   return (
-    <>
+    <div className="flex flex-col items-center h-screen justify-center p-2">
       <div className="flex p-8 items-center justify-center mt-3">
         <h1 className="text-lg text-indigo-400 font-bold mr-3">Tries</h1>
         <h1 className="ttext-lg font-bold text-indigo-500 bg-indigo-200 p-1 text-center rounded-md">
           {tryCount}
         </h1>
       </div>
-      <div className="flex flex-wrap p-2 bg-indigo-100 rouned-md justify-center mt-2">
+      <div className="grid grid-cols-4 gap-4 bg-indigo-100 rounded-md p-4">
         {getTiles(16).map((tile, i) => (
           <Tile key={i} flip={() => flip(i)} {...tile} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
